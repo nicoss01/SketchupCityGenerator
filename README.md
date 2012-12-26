@@ -1,4 +1,4 @@
-SketchupCityGenerator
+Sketchup City Generator
 =====================
 
 A Sketchup Plugin to generate a texturized city

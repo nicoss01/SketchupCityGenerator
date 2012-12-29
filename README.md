@@ -20,3 +20,6 @@ Generate Houses
 In __Erreurs404net menu__ click on __"Houses"__ button  
 Next choose houses dimensions and wall weight
 A random ratio will be use for each house in order to make differents constructions.
+
+
+[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/2c3425a2c3447bfdf08fecb261fa6bde "githalytics.com")](http://githalytics.com/nicoss01/SketchupCityGenerator)

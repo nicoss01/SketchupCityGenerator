@@ -14,3 +14,9 @@ Generate House
 ---------------
 In __Erreurs404net menu__ click on __"House"__ button  
 Next choose house dimensions and wall weight
+
+Generate Houses
+---------------
+In __Erreurs404net menu__ click on __"Houses"__ button  
+Next choose houses dimensions and wall weight
+A random ratio will be use for each house in order to make differents constructions.

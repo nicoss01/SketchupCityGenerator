@@ -1,12 +1,4 @@
 require 'sketchup'
-ext = SketchupExtension.new 'Erreurs404net_Sketchup', 'erreurs404net.rb'
-ext.creator     = 'Nicolas Grillet (n.grillet@devictio.fr)'
-ext.version     = '1.0.0'
-ext.copyright   = '2012, Nicolas Grillet'
-ext.description = ''
-
-# Register and load the extension on startup.
-Sketchup.register_extension ext, true
 
 menu = UI.menu("Draw").add_submenu("Erreurs404net")
 
@@ -84,3 +76,33 @@ cmd.large_icon = File.dirname(__FILE__)+"\\Erreurs404net\\city.png"
 cmd.status_bar_text = "Generate City"
 cmd.tooltip = "Generate a city"
 menu.add_item(cmd)
+
+cmd2 = UI::Command.new("House") { 
+	model	= Sketchup.active_model
+	ents		= model.active_entities
+	materials = model.materials
+	prompts 	= ["Longueur", "Largeur","Hauteur","Epaisseur des murs","Hauteur du toit"]
+	values 	= [10.m,10.m,3.m,50.cm,2.m]
+	results 	= UI.inputbox prompts, values, "Parametres de la maison"
+	model.start_operation "House in progress"
+	ent 	= Sketchup.active_model.entities
+	house	= ent.add_face [0,0,0],[0,results[1],0],[results[0],results[1],0] ,[results[0],0,0]
+	house.reverse!
+	house.pushpull results[2]
+	house2	= ent.add_face [results[3],results[3],0],[results[3],results[1]-results[3],0],[results[0]-results[3],results[1]-results[3],0] ,[results[0]-results[3],results[3],0]
+	house2.reverse!
+	house2.pushpull results[2]-results[3]
+	toit 	= ent.add_face [0,0,results[2]],[0,results[1],results[2]],[0,results[1]/2,results[2]+results[4]],[0,0,results[2]]
+	toit.reverse!
+	toit.pushpull results[0]
+	toit2 	= ent.add_face [results[0],0,results[2]],[results[0],results[1],results[2]],[results[0],results[1]/2,results[2]+results[4]],[results[0],0,results[2]]
+	toit2.reverse!
+	house3	= ent.add_face [results[3],results[3],0],[results[3],results[1]-results[3],0],[results[0]-results[3],results[1]-results[3],0] ,[results[0]-results[3],results[3],0]
+	model.commit_operation
+}
+cmd2.small_icon = File.dirname(__FILE__)+"\\Erreurs404net\\citys.png"
+cmd2.large_icon = File.dirname(__FILE__)+"\\Erreurs404net\\city.png"
+cmd2.status_bar_text = "Generate House"
+cmd2.tooltip = "Generate a House"
+menu.add_item(cmd2)
+

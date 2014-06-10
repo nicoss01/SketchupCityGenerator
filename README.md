@@ -1,4 +1,4 @@
-Sketchup City Generator
+Sketchup City Generator [![endorse](https://api.coderwall.com/nicoss01/endorsecount.png)](https://coderwall.com/nicoss01)
 =====================
 
 A Sketchup Plugin to generate a texturized city.  
